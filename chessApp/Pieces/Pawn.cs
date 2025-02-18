@@ -12,7 +12,7 @@ namespace chessApp.Pieces
         {
         }
 
-        public override List<Location> CanMoveTo()
+        public override List<Location> CanMoveTo(Location LocationOfAllPieces)
         {
             throw new NotImplementedException();
         }

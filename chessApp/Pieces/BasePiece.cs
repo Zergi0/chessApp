@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace chessApp.Pieces
 {
-    abstract class BasePiece
+    public abstract class BasePiece
     {
-        abstract public List<Location> CanMoveTo();
+        abstract public List<Location> CanMoveTo(Location LocationOfAllPieces);
         abstract public void MoveTo(Location LocationToMove);
 
         public void GetTaken()
@@ -16,18 +16,16 @@ namespace chessApp.Pieces
             Alive = false;
         }
 
-        private String Color;
-        private Location Location;
-        private Boolean Alive;
+        public String Color { get; set; }
+        public Location Location {  get; set; }
+        public Boolean Alive { get; private set; }
 
 
-        public BasePiece(String Color, Location location){
-            this.Color = Color;
-            this.Location = location;
-            this.Alive = true;
+        public BasePiece(string color, Location location)
+        {
+            Color = color;
+            Location = location;
+            Alive = true;
         }
-
-
-
     }
 }

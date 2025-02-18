@@ -8,7 +8,7 @@ namespace chessApp.Pieces
 {
     class Pawn : BasePiece
     {
-        public Pawn(string Color, Location location) : base(Color, location)
+        public Pawn(Colour Colour, Location location) : base(Colour, location)
         {
         }
 

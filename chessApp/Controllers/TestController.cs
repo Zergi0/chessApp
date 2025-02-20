@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace chessApp.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/test")]
     public class TestController : ControllerBase
     {
         private readonly ITestService _testService;

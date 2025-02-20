@@ -1,4 +1,4 @@
-﻿using chessApp.Board;
+﻿using chessApp.Pieces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,10 @@ namespace chessApp.Game
 {
     public interface IGame
     {
-        IBoard board { get; set; }
+        List<BasePiece> Pieces { get;}
+        void CreateBaseBoard();
+        void MovePieceTo(BasePiece from, Location to);
+
     }
 }
 

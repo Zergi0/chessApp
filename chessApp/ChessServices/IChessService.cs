@@ -4,7 +4,9 @@ namespace chessApp.ChessServices
 {
     public interface IChessService
     {
-        public void CreateNewBoard();
+        void CreateNewBoard();
         List<BasePiece> GetPieces();
+        BasePiece MovePiece(Location from, Location to);
+
     }
 }

@@ -20,8 +20,13 @@ namespace chessApp.ChessServices
 
         public List<BasePiece> GetPieces()
         {
-            Console.WriteLine(game.Pieces.Count);
             return game.Pieces;
         }
+        //
+        public BasePiece MovePiece(Location from, Location to)
+        {
+            return game.MovePieceTo(from, to);
+        }
+
     }
 }

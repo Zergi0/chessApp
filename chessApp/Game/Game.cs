@@ -16,14 +16,34 @@ namespace chessApp.Game
             Pieces = [];
         }
 
-        public void MovePieceTo(BasePiece from, Location to)
+        //
+        public BasePiece MovePieceTo(Location from, Location to)
         {
-            
+            var piece = IsThereAPieceAt(from);
+            var CanMove =  piece.CanMoveTo(to, Pieces);
+
+            if (CanMove)
+            {
+                piece.MoveTo(to);
+            }
+            return piece;
         }
 
-        private bool IsThereAPieceAt(Location location)
+        private BasePiece IsThereAPieceAt(Location location) 
         {
-            return Pieces.Any(a => a.Location.X == location.X && a.Location.Y == location.Y);
+            if (location == null)
+            {
+                throw new ArgumentNullException(nameof(location), "Location cannot be null.");
+            }
+
+            var piece = Pieces.FirstOrDefault(a => a.Location.X == location.X && a.Location.Y == location.Y);
+
+            if (piece == null)
+            {
+                throw new InvalidOperationException($"No piece found at {location.X}{location.Y}.");
+            }
+
+            return piece;
 
         }
 

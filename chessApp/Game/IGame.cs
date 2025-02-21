@@ -11,7 +11,7 @@ namespace chessApp.Game
     {
         List<BasePiece> Pieces { get;}
         void CreateBaseBoard();
-        void MovePieceTo(BasePiece from, Location to);
+        BasePiece MovePieceTo(Location from, Location to);
 
     }
 }

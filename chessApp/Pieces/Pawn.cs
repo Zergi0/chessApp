@@ -12,14 +12,10 @@ namespace chessApp.Pieces
         {
         }
 
-        public override List<Location> CanMoveTo(Location LocationOfAllPieces)
+        //TODO
+        public override bool CanMoveTo(Location to, List<BasePiece> pieces)
         {
-            throw new NotImplementedException();
-        }
-
-        public override void MoveTo(Location LocationToMove)
-        {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

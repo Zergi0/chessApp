@@ -8,8 +8,11 @@ namespace chessApp.Pieces
 {
     public abstract class BasePiece
     {
-        abstract public List<Location> CanMoveTo(Location LocationOfAllPieces);
-        abstract public void MoveTo(Location LocationToMove);
+        abstract public bool CanMoveTo(Location to, List<BasePiece> pieces);
+        public void MoveTo(Location LocationToMove)
+        {
+           Location = LocationToMove;
+        }
 
         public void GetTaken()
         {

@@ -9,26 +9,18 @@ namespace chessApp.Pieces
     public abstract class BasePiece
     {
         abstract public bool CanMoveTo(Location to, List<BasePiece> pieces);
-        public void MoveTo(Location LocationToMove)
+        public virtual void MoveTo(Location to,List<BasePiece> pieces)
         {
-           Location = LocationToMove;
+           Location = to;
         }
-
-        public void GetTaken()
-        {
-            Alive = false;
-        }
-
         public Colour Colour { get; set; }
         public Location Location {  get; set; }
-        public Boolean Alive { get; private set; }
 
 
         public BasePiece(Colour colour, Location location)
         {
             Colour = colour;
             Location = location;
-            Alive = true;
         }
     }
 }

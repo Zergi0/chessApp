@@ -22,29 +22,32 @@ namespace chessApp.Controllers
             return Ok(Data);
         }
 
-        [HttpPost("CreateNewBoard")]
-        public IActionResult Post()
+        [HttpPost("CreateNewStandardBoard")]
+        public IActionResult PostBoard()
         {
             chessService.CreateNewBoard();
             var Data = chessService.GetPieces();
             return Ok(Data);
         }
 
-
-        //
         [HttpPut("MakeMove")]
         public IActionResult MovePiece([FromBody] MoveRequest move)
         {
+            if (move == null) return NotFound();
             try
             {
+                Console.WriteLine(move.From + " " + move.To);
+
                 var piece = chessService.MovePiece(move.From, move.To);
                 return Ok(piece);
-            } catch (ArgumentNullException ex)
+            }
+            catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
-
-            } catch (InvalidOperationException ex) {
-                return BadRequest(ex.Message);
+                return BadRequest(ex);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
             }
         }
 

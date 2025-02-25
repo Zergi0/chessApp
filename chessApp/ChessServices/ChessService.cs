@@ -22,11 +22,17 @@ namespace chessApp.ChessServices
         {
             return game.Pieces;
         }
-        //
+        
         public BasePiece MovePiece(Location from, Location to)
         {
-            return game.MovePieceTo(from, to);
+            try
+            {
+                return game.MovePieceTo(from, to);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
-
     }
 }

@@ -19,7 +19,7 @@ namespace chessApp.Pieces
             return X+ "" + Y;
         }
 
-        public int GetXAsNumber()
+        public int GetXAsNum()
         {
             if (X >= 'A' && X <= 'H')
             {

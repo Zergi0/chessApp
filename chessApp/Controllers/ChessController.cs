@@ -19,15 +19,15 @@ namespace chessApp.Controllers
         [HttpGet("GetBoard")]
         public IActionResult Get()
         {
-            var Data = chessService.GetPieces();
+            var Data = chessService.Pieces;
             return Ok(Data);
         }
 
         [HttpPost("CreateNewStandardBoard")]
         public IActionResult PostBoard()
         {
-            chessService.CreateNewBoard();
-            var Data = chessService.GetPieces();
+            chessService.CreateBaseBoard();
+            var Data = chessService.Pieces;
             return Ok(Data);
         }
 

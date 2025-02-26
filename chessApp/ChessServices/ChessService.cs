@@ -1,45 +1,89 @@
-﻿using chessApp.Game;
-using chessApp.Pieces;
+﻿using chessApp.Pieces;
 
 namespace chessApp.ChessServices
 {
     public class ChessService : IChessService
     {
 
-        private IGame game;
+        public List<BasePiece> Pieces { get; set; }
 
-        public ChessService(IGame game)
+        public ChessService()
         {
-            this.game = game;
+            Pieces = [];
         }
 
-        public void CreateNewBoard()
-        {
-            game.CreateBaseBoard();
-        }
 
-        public List<BasePiece> GetPieces()
+        //creates a basic standard chess board
+        public void CreateBaseBoard()
         {
-            return game.Pieces;
+            Pieces = new List<BasePiece>
+            {
+               new Pawn(Colour.black, new Location('A', 7)),
+               new Pawn(Colour.black, new Location('B', 7)),
+               new Pawn(Colour.black, new Location('C', 7)),
+               new Pawn(Colour.black, new Location('D', 7)),
+               new Pawn(Colour.black, new Location('E', 7)),
+               new Pawn(Colour.black, new Location('F', 7)),
+               new Pawn(Colour.black, new Location('G', 7)),
+               new Pawn(Colour.black, new Location('H', 7)),
+               new Pawn(Colour.white, new Location('A', 2)),
+               new Pawn(Colour.white, new Location('B', 2)),
+               new Pawn(Colour.white, new Location('C', 2)),
+               new Pawn(Colour.white, new Location('D', 2)),
+               new Pawn(Colour.white, new Location('E', 2)),
+               new Pawn(Colour.white, new Location('F', 2)),
+               new Pawn(Colour.white, new Location('G', 2)),
+               new Pawn(Colour.white, new Location('H', 2)),
+            };
         }
         
         public BasePiece MovePiece(Location from, Location to)
         {
             try
             {
-                return game.MovePieceTo(from, to);
+                var piece = IsThereAPieceAt(from);
+                piece.MoveTo(to, Pieces);
+                return piece;
             }
             catch (Exception)
             {
                 throw;
             }
         }
+        private BasePiece IsThereAPieceAt(Location location)
+        {
+            if (location == null)
+            {
+                throw new ArgumentNullException(nameof(location), "Location cannot be null.");
+            }
+
+            var piece = Pieces.FirstOrDefault(a => a.Location.X == location.X && a.Location.Y == location.Y);
+
+            return piece == null ? throw new InvalidOperationException($"No piece found at {location.X}{location.Y}.") : piece;
+        }
+
 
         public void CreateCustomBoard(List<PieceImport> pieceImports)
         {
             try
             {
-                game.CreateCustomBoard(pieceImports);
+                foreach (var import in pieceImports)
+                {
+                    BasePiece p = import.Type switch
+                    {
+                        "rook" => new Rook(import.Colour, import.Location),
+                        "pawn" => new Pawn(import.Colour, import.Location),
+                        "knight" => new Knight(import.Colour, import.Location),
+                        "bishop" => new Bishop(import.Colour, import.Location),
+                        "queen" => new Queen(import.Colour, import.Location),
+                        "king" => new King(import.Colour, import.Location),
+                        _ => throw new ArgumentException($"Unknown piece type: {import.Type}"),
+                    };
+                    if (Pieces.Any(p => p.Location.X == import.Location.X && p.Location.Y == import.Location.Y))
+                    {
+                        Pieces.Add(p);
+                    }
+                }
             }
             catch (Exception)
             {
@@ -49,7 +93,7 @@ namespace chessApp.ChessServices
 
         public void EmptyTheBoard()
         {
-            game.EmptyTheBoard();
+            Pieces.Clear();
         }
     }
 }

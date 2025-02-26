@@ -12,6 +12,7 @@ namespace chessApp.Game
         List<BasePiece> Pieces { get;}
         void CreateBaseBoard();
         void CreateCustomBoard(List<PieceImport> pieceImports);
+        void EmptyTheBoard();
         BasePiece MovePieceTo(Location from, Location to);
 
     }

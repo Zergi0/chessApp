@@ -7,6 +7,8 @@ namespace chessApp.ChessServices
         void CreateNewBoard();
 
         void CreateCustomBoard(List<PieceImport> pieceImports);
+
+        void EmptyTheBoard();
         List<BasePiece> GetPieces();
         BasePiece MovePiece(Location from, Location to);
 

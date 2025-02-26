@@ -1,5 +1,6 @@
 ﻿using chessApp.ChessServices;
 using chessApp.Pieces;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace chessApp.Controllers
@@ -39,7 +40,6 @@ namespace chessApp.Controllers
         [HttpPut("MakeMove")]
         public IActionResult MovePiece([FromBody] MoveRequest move)
         {
-            if (move == null) return NotFound();
             try
             {
                 Console.WriteLine(move.From + " " + move.To);
@@ -49,14 +49,26 @@ namespace chessApp.Controllers
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                return NotFound(ex);
+                return NotFound(ex.Message);
             }
         }
-
+        [HttpDelete("EmptyBoard")]
+        public IActionResult EmptyBoard()
+        {
+            try
+            {
+                chessService.EmptyTheBoard();
+                return Ok("Board successfully emptied!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
         public class MoveRequest
         {
             public required Location From { get; set; }

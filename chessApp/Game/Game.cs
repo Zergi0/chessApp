@@ -78,7 +78,10 @@ namespace chessApp.Game
                     Pieces.Add(p);
                 }
             }
-
+        }
+        public void EmptyTheBoard()
+        {
+            Pieces.Clear();
         }
     }
 }

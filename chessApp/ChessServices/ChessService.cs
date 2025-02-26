@@ -46,5 +46,10 @@ namespace chessApp.ChessServices
                 throw;
             }
         }
+
+        public void EmptyTheBoard()
+        {
+            game.EmptyTheBoard();
+        }
     }
 }

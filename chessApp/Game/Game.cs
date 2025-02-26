@@ -59,5 +59,26 @@ namespace chessApp.Game
                new Pawn(Colour.white, new Location('H', 2)),
             };
         }
+        public void CreateCustomBoard(List<PieceImport> pieceImports)
+        {
+            foreach (var import in pieceImports)
+            {
+                BasePiece p = import.Type switch
+                {
+                    "rook" => new Rook(import.Colour, import.Location),
+                    "pawn" => new Pawn(import.Colour, import.Location),
+                    "knight" => new Knight(import.Colour, import.Location),
+                    "bishop" => new Bishop(import.Colour, import.Location),
+                    "queen" => new Queen(import.Colour, import.Location),
+                    "king" => new King(import.Colour, import.Location),
+                    _ => throw new ArgumentException($"Unknown piece type: {import.Type}"),
+                };
+                if (Pieces.Any(p => p.Location.X == import.Location.X && p.Location.Y == import.Location.Y))
+                {
+                    Pieces.Add(p);
+                }
+            }
+
+        }
     }
 }

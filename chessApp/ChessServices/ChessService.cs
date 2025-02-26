@@ -34,5 +34,17 @@ namespace chessApp.ChessServices
                 throw;
             }
         }
+
+        public void CreateCustomBoard(List<PieceImport> pieceImports)
+        {
+            try
+            {
+                game.CreateCustomBoard(pieceImports);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -30,6 +30,12 @@ namespace chessApp.Controllers
             return Ok(Data);
         }
 
+        [HttpPost("CreateCustomBoard")]
+        public IActionResult PostCustomBoard([FromBody] List<PieceImport> pieceImports)
+        {
+            return Ok();
+        }
+
         [HttpPut("MakeMove")]
         public IActionResult MovePiece([FromBody] MoveRequest move)
         {

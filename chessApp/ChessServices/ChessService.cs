@@ -18,42 +18,42 @@ namespace chessApp.ChessServices
         {
             Pieces = new List<BasePiece>
 {
-    // Black Pieces
-    new Rook(Colour.black, new Location('A', 8)),
-    new Knight(Colour.black, new Location('B', 8)),
-    new Bishop(Colour.black, new Location('C', 8)),
-    new Queen(Colour.black, new Location('D', 8)),
-    new King(Colour.black, new Location('E', 8)),
-    new Bishop(Colour.black, new Location('F', 8)),
-    new Knight(Colour.black, new Location('G', 8)),
-    new Rook(Colour.black, new Location('H', 8)),
-    new Pawn(Colour.black, new Location('A', 7)),
-    new Pawn(Colour.black, new Location('B', 7)),
-    new Pawn(Colour.black, new Location('C', 7)),
-    new Pawn(Colour.black, new Location('D', 7)),
-    new Pawn(Colour.black, new Location('E', 7)),
-    new Pawn(Colour.black, new Location('F', 7)),
-    new Pawn(Colour.black, new Location('G', 7)),
-    new Pawn(Colour.black, new Location('H', 7)),
+             // Black Pieces
+             new Rook(Colour.black, new Location('A', 8)),
+             new Knight(Colour.black, new Location('B', 8)),
+             new Bishop(Colour.black, new Location('C', 8)),
+             new Queen(Colour.black, new Location('D', 8)),
+             new King(Colour.black, new Location('E', 8)),
+             new Bishop(Colour.black, new Location('F', 8)),
+             new Knight(Colour.black, new Location('G', 8)),
+             new Rook(Colour.black, new Location('H', 8)),
+             new Pawn(Colour.black, new Location('A', 7)),
+             new Pawn(Colour.black, new Location('B', 7)),
+             new Pawn(Colour.black, new Location('C', 7)),
+             new Pawn(Colour.black, new Location('D', 7)),
+             new Pawn(Colour.black, new Location('E', 7)),
+             new Pawn(Colour.black, new Location('F', 7)),
+             new Pawn(Colour.black, new Location('G', 7)),
+             new Pawn(Colour.black, new Location('H', 7)),
 
-    // White Pieces
-    new Rook(Colour.white, new Location('A', 1)),
-    new Knight(Colour.white, new Location('B', 1)),
-    new Bishop(Colour.white, new Location('C', 1)),
-    new Queen(Colour.white, new Location('D', 1)),
-    new King(Colour.white, new Location('E', 1)),
-    new Bishop(Colour.white, new Location('F', 1)),
-    new Knight(Colour.white, new Location('G', 1)),
-    new Rook(Colour.white, new Location('H', 1)),
-    new Pawn(Colour.white, new Location('A', 2)),
-    new Pawn(Colour.white, new Location('B', 2)),
-    new Pawn(Colour.white, new Location('C', 2)),
-    new Pawn(Colour.white, new Location('D', 2)),
-    new Pawn(Colour.white, new Location('E', 2)),
-    new Pawn(Colour.white, new Location('F', 2)),
-    new Pawn(Colour.white, new Location('G', 2)),
-    new Pawn(Colour.white, new Location('H', 2))
-};
+             // White Pieces
+             new Rook(Colour.white, new Location('A', 1)),
+             new Knight(Colour.white, new Location('B', 1)),
+             new Bishop(Colour.white, new Location('C', 1)),
+             new Queen(Colour.white, new Location('D', 1)),
+             new King(Colour.white, new Location('E', 1)),
+             new Bishop(Colour.white, new Location('F', 1)),
+             new Knight(Colour.white, new Location('G', 1)),
+             new Rook(Colour.white, new Location('H', 1)),
+             new Pawn(Colour.white, new Location('A', 2)),
+             new Pawn(Colour.white, new Location('B', 2)),
+             new Pawn(Colour.white, new Location('C', 2)),
+             new Pawn(Colour.white, new Location('D', 2)),
+             new Pawn(Colour.white, new Location('E', 2)),
+             new Pawn(Colour.white, new Location('F', 2)),
+             new Pawn(Colour.white, new Location('G', 2)),
+             new Pawn(Colour.white, new Location('H', 2))
+            };
 
         }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace chessApp.Pieces
+﻿namespace chessApp.Pieces
 {
     class Pawn : BasePiece
     {
@@ -44,11 +38,11 @@ namespace chessApp.Pieces
                     throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
             }
-            catch(InvalidDataException)
+            catch (InvalidDataException)
             {
                 throw;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
             }

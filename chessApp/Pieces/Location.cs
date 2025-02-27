@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace chessApp.Pieces
+﻿namespace chessApp.Pieces
 {
     public class Location
     {
@@ -16,7 +9,7 @@ namespace chessApp.Pieces
         }
         public override string ToString()
         {
-            return X+ "" + Y;
+            return X + "" + Y;
         }
 
         public int GetXAsNum()

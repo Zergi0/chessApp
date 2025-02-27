@@ -10,7 +10,7 @@ namespace chessApp.ChessServices
         void CreateCustomBoard(List<PieceImport> pieceImports);
 
         void EmptyTheBoard();
-        
+
         BasePiece MovePiece(Location from, Location to);
 
     }

@@ -19,22 +19,46 @@ namespace chessApp.Controllers
         [HttpGet("GetBoard")]
         public IActionResult Get()
         {
-            var Data = chessService.Pieces;
-            return Ok(Data);
+            try
+            {
+
+                var Data = chessService.Pieces;
+                return Ok(Data);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Could not retrive board!");
+            }
         }
 
         [HttpPost("CreateNewStandardBoard")]
         public IActionResult PostBoard()
         {
-            chessService.CreateBaseBoard();
-            var Data = chessService.Pieces;
-            return Ok(Data);
+            try
+            {
+
+                chessService.CreateBaseBoard();
+                return Ok(chessService.Pieces);
+            }
+            catch
+            {
+                return BadRequest("Couldn't create standard chess board!");
+            }
         }
 
         [HttpPost("CreateCustomBoard")]
         public IActionResult PostCustomBoard([FromBody] List<PieceImport> pieceImports)
         {
-            return Ok();
+            try
+            {
+                chessService.CreateCustomBoard(pieceImports);
+                Console.WriteLine(pieceImports.Count);
+                return Ok(chessService.Pieces);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("MakeMove")]

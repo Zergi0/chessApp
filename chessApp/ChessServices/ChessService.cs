@@ -79,7 +79,7 @@ namespace chessApp.ChessServices
                         "king" => new King(import.Colour, import.Location),
                         _ => throw new ArgumentException($"Unknown piece type: {import.Type}"),
                     };
-                    if (Pieces.Any(p => p.Location.X == import.Location.X && p.Location.Y == import.Location.Y))
+                    if (!Pieces.Any(p => p.Location.X == import.Location.X && p.Location.Y == import.Location.Y))
                     {
                         Pieces.Add(p);
                     }

@@ -1,31 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace chessApp.Pieces
+﻿namespace chessApp.Pieces
 {
     public abstract class BasePiece
     {
-        abstract public List<Location> CanMoveTo(Location LocationOfAllPieces);
-        abstract public void MoveTo(Location LocationToMove);
-
-        public void GetTaken()
+        public virtual void MoveTo(Location to, List<BasePiece> pieces)
         {
-            Alive = false;
+            Location = to;
         }
-
-        public String Color { get; set; }
-        public Location Location {  get; set; }
-        public Boolean Alive { get; private set; }
+        public Colour Colour { get; set; }
+        public Location Location { get; set; }
 
 
-        public BasePiece(string color, Location location)
+        public BasePiece(Colour colour, Location location)
         {
-            Color = color;
+            Colour = colour;
             Location = location;
-            Alive = true;
         }
     }
 }

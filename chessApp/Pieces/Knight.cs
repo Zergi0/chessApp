@@ -1,9 +1,41 @@
-﻿namespace chessApp.Pieces
+﻿
+namespace chessApp.Pieces
 {
     public class Knight : BasePiece
     {
         public Knight(Colour colour, Location location) : base(colour, location)
         {
+        }
+
+        public override void MoveTo(Location to, List<BasePiece> pieces)
+        {
+            try
+            {
+
+                if (pieces.Any(p => p.Location.X == Location.X && p.Location.Y == Location.Y && p.Colour == Colour))
+                {
+                    throw new InvalidOperationException("This move is not allowed.");
+                }
+                int deltaY = Math.Abs(Location.Y - to.Y);
+                int deltaX = Math.Abs(Location.X - to.X);
+                if ((deltaX == 2 && deltaY == 1) || (deltaX == 1 && deltaY == 2))
+                {
+                    var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);
+                    if (piece != null)
+                    {
+                        pieces.Remove(piece);
+                    }
+                    Location = to;
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new InvalidDataException("Unknown error.");
+            }
         }
     }
 }

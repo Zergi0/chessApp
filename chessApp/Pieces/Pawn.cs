@@ -30,7 +30,10 @@
                     && IsThatTakenByOppositeColour(to, pieces, Colour))
                 {
                     var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);
-                    pieces.Remove(piece);
+                    if (piece != null)
+                    {
+                        pieces.Remove(piece);
+                    }
                     Location = to;
                 }
                 else

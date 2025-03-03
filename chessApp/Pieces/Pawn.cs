@@ -10,6 +10,10 @@
         {
             try
             {
+                if (pieces.Any(p => p.Location.X == Location.X && p.Location.Y == Location.Y && p.Colour == Colour))
+                {
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                }
                 int direction = (Colour == Colour.white) ? 1 : -1;
                 Console.WriteLine(Location.X + " " + to.X + " " + Location.GetXAsNum() + 1);
 
@@ -38,16 +42,16 @@
                 }
                 else
                 {
-                    throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
             }
-            catch (InvalidDataException)
+            catch (InvalidOperationException)
             {
                 throw;
             }
             catch (Exception)
             {
-                throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                throw new InvalidDataException("Unknown error.");
             }
 
         }

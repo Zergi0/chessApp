@@ -14,10 +14,10 @@ namespace chessApp.Pieces
 
                 if (pieces.Any(p => p.Location.X == Location.X && p.Location.Y == Location.Y && p.Colour == Colour))
                 {
-                    throw new InvalidOperationException("This move is not allowed.");
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
                 int deltaY = Math.Abs(Location.Y - to.Y);
-                int deltaX = Math.Abs(Location.X - to.X);
+                int deltaX = Math.Abs(Location.GetXAsNum() - to.GetXAsNum());
                 if ((deltaX == 2 && deltaY == 1) || (deltaX == 1 && deltaY == 2))
                 {
                     var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);

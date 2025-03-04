@@ -15,9 +15,7 @@
                     throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
                 int direction = (Colour == Colour.white) ? 1 : -1;
-                Console.WriteLine(Location.X + " " + to.X + " " + Location.GetXAsNum() + 1);
 
-                Console.WriteLine(IsThatTakenByOppositeColour(to, pieces, Colour) + " isThatTaken? " + to);
                 //1 step forward
                 if (Location.Y + direction == to.Y && IsThatEmpty(to, pieces))
                 {

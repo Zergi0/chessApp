@@ -31,15 +31,14 @@ namespace chessApp.Pieces
                 {
                     throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
-                else
+               
+                var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);
+                if (piece != null)
                 {
-                    var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);
-                    if (piece != null)
-                    {
-                        pieces.Remove(piece);
-                    }
-                    Location = to;
+                    pieces.Remove(piece);
                 }
+                Location = to;
+                
             }
             catch (InvalidOperationException)
             {

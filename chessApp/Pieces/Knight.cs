@@ -27,6 +27,10 @@ namespace chessApp.Pieces
                     }
                     Location = to;
                 }
+                else
+                {
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                }
             }
             catch (InvalidOperationException)
             {

@@ -9,7 +9,7 @@
         {
             try
             {
-                if (pieces.Any(p => p.Location.X == Location.X && p.Location.Y == Location.Y && p.Colour == Colour))
+                if (pieces.Any(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour == Colour))
                 {
                     throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }

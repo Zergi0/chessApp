@@ -10,10 +10,12 @@
         {
             try
             {
+                if (pieces.Any(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour == Colour))
+                {
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                }
                 int direction = (Colour == Colour.white) ? 1 : -1;
-                Console.WriteLine(Location.X + " " + to.X + " " + Location.GetXAsNum() + 1);
 
-                Console.WriteLine(IsThatTakenByOppositeColour(to, pieces, Colour) + " isThatTaken? " + to);
                 //1 step forward
                 if (Location.Y + direction == to.Y && IsThatEmpty(to, pieces))
                 {
@@ -30,21 +32,24 @@
                     && IsThatTakenByOppositeColour(to, pieces, Colour))
                 {
                     var piece = pieces.FirstOrDefault(p => p.Location.X == to.X && p.Location.Y == to.Y && p.Colour != Colour);
-                    pieces.Remove(piece);
+                    if (piece != null)
+                    {
+                        pieces.Remove(piece);
+                    }
                     Location = to;
                 }
                 else
                 {
-                    throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                    throw new InvalidOperationException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
                 }
             }
-            catch (InvalidDataException)
+            catch (InvalidOperationException)
             {
                 throw;
             }
             catch (Exception)
             {
-                throw new InvalidDataException($"Cannot make move to {to.X}{to.Y} from {Location.X}{Location.Y}.");
+                throw new InvalidDataException("Unknown error.");
             }
 
         }

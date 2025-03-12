@@ -2,7 +2,7 @@
 using chessApp.Pieces;
 using Xunit;
 
-namespace ChessGame.Tests;
+namespace chessApp.ChessGame.Tests;
 
 public class PawnTests : IDisposable
 {
@@ -18,13 +18,13 @@ public class PawnTests : IDisposable
     }
 
     [Theory]
-    [InlineData('A',3,Colour.white,'A',2)]
-    [InlineData('A',4,Colour.white,'A',2)]
-    [InlineData('A',6,Colour.black,'A',7)]
-    [InlineData('A',5,Colour.black,'A',7)]
-    [InlineData('A',4,Colour.white,'A',3)]
-    [InlineData('A',4,Colour.black,'A',5)]
-    public void MovePawnForward(char toX, int toY,Colour colour,char fromX, int fromY)
+    [InlineData('A', 2, Colour.white, 'A', 3)]
+    [InlineData('A', 2, Colour.white, 'A', 4)]
+    [InlineData('A', 7, Colour.black, 'A', 6)]
+    [InlineData('A', 7, Colour.black, 'A', 5)]
+    [InlineData('A', 3, Colour.white, 'A', 4)]
+    [InlineData('A', 5, Colour.black, 'A', 4)]
+    public void MovePawnForward(char fromX, int fromY, Colour colour, char toX, int toY)
     {
         List<PieceImport> pieces = new() { new(colour, new Location(fromX,fromY), "pawn") };
         chessService.CreateCustomBoard(pieces);
@@ -97,11 +97,11 @@ public class PawnTests : IDisposable
 
 
     [Theory]
-    [InlineData('C',3,Colour.white,'B',2,Colour.black)]
-    [InlineData('A',3,Colour.white,'B',2,Colour.black)]
-    [InlineData('A',6,Colour.black,'B',7,Colour.white)]
-    [InlineData('C',6,Colour.black,'B',7,Colour.white)]
-    public void MovePawnToTake(char toX, int toY, Colour colourSelf, char fromX, int fromY,Colour colourOpponent)
+    [InlineData('B', 2, Colour.black, 'C', 3, Colour.white)]
+    [InlineData('B', 2, Colour.black, 'A', 3, Colour.white)]
+    [InlineData('B', 7, Colour.white, 'A', 6, Colour.black)]
+    [InlineData('B', 7, Colour.white, 'C', 6, Colour.black)]
+    public void MovePawnToTake(char fromX, int fromY, Colour colourSelf, char toX, int toY, Colour colourOpponent)
     {
         List<PieceImport> pieces = new() { new(colourSelf, new Location(fromX,fromY), "pawn"), new(colourOpponent, new Location(toX,toY), "pawn") };
         Location to = new Location(toX,toY);
